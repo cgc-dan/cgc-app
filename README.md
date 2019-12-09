@@ -1,1 +1,1 @@
-| # CGC APP |
+# CGC APP
