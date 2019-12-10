@@ -1,4 +1,4 @@
-# -[ ]CGC APP
+# [CGC APP]
 ![CGC APP](https://raw.githubusercontent.com/cgc-dan/cgc-app/master/docs/screens/cgc-app-templatev1.jpg)
 
 npm
@@ -15,7 +15,7 @@ Because the app directory is not on root you may want to use the command below a
 npm start --prefix cgc-app-templatev1
 ```
 
-##To do:
+## To do:
 - [ ] optimize the app using ```<template>``` instead of individual web pages
 - [ ] sanatize the markup
 - [ ] learn to create an installer which actually works and not all bs I've already tried 
