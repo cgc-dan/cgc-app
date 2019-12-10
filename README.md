@@ -9,3 +9,7 @@ cd your-project-name
 
 npm start --prefix your-project-name
 ```
+
+Because the app directory is not on root you may want to try
+```npm start --prefix cgc-app-templatev1```
+after cloning the repo
