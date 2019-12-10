@@ -10,6 +10,12 @@ cd your-project-name
 npm start --prefix your-project-name
 ```
 
-Because the app directory is not on root you may want to try
-```npm start --prefix cgc-app-templatev1```
-after cloning the repo
+Because the app directory is not on root you may want to use the command below after cloning the repo
+```
+npm start --prefix cgc-app-templatev1
+```
+
+To do:
+[] optimize the app using ```<template>``` instead of individual web pages
+[] sanatize the markup
+[] learn to create an installer which actually works and not all bs I've already tried 
