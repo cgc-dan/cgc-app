@@ -19,3 +19,7 @@ npm start --prefix cgc-app-templatev1
 - [ ] optimize the app using ```<template>``` instead of individual web pages
 - [ ] sanitize the markup
 - [ ] learn to create an installer which actually works and not all bs I've already tried 
+
+
+## Done:
+- [x] splash screen - currently not updated to repo
