@@ -7,6 +7,42 @@ const debug = /--debug/.test(process.argv[2])
 
 if (process.mas) app.setName('')
 
+
+
+
+let loadingScreen;
+const createLoadingScreen = () => {
+  /// create a browser window
+  loadingScreen = new BrowserWindow(
+    Object.assign({
+      /// define width and height for the window
+      width: 330,
+      height: 450,
+	  minWidth: 330,
+	  minHeight: 450,
+	  maxWidth: 330,
+	  maxHeight: 450,
+	  resizable: false,
+	  movable: true,
+	  closable: true,
+	  icon: 'assets/images/favicon/wicon.png',
+	  alwaysOnTop: true,
+      /// remove the window frame, so it will become a frameless window 
+      frame: false,
+      /// and set the transparency, to remove any window background color
+      transparent: true
+    })
+  );
+ // loadingScreen.setResizable(false);
+  loadingScreen.loadURL(
+    'file://' + __dirname + '/windows/loading/loading.html'
+  );
+  loadingScreen.on('closed', () => (loadingScreen = null));
+  loadingScreen.webContents.on('did-finish-load', () => {
+    loadingScreen.show();
+  });
+};
+
 let mainWindow = null
 
 function initialize () {
@@ -44,7 +80,14 @@ function createWindow () {
 	
 	
 
- mainWindow = new BrowserWindow(windowOptions)
+ mainWindow = new BrowserWindow(windowOptions);
+  mainWindow.webContents.on('did-finish-load' , () => {
+  /// then close the loading screen window and show the main window
+  if (loadingScreen) { 
+  loadingScreen.close();
+  }
+  mainWindow.show();
+})
 mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
 ////	mainWindow.loadURL('https://design-xpro.com')
 
@@ -61,6 +104,21 @@ mainWindow.loadURL(path.join('file://', __dirname, '/index.html'))
     })
   }
 
+
+
+
+//
+
+app.on('ready', () => {
+  createLoadingScreen();
+  /// add a little bit of delay for tutorial purposes, remove when not needed
+  setTimeout(() => {
+    createWindow();
+  }, 4000);
+})
+
+
+//
   app.on('ready', () => {
     createWindow()
   })
@@ -218,5 +276,3 @@ const template = [
 
 const menu = Menu.buildFromTemplate(template)
 Menu.setApplicationMenu(menu)
-
-
